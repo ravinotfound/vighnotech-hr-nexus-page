@@ -3,6 +3,8 @@ import React from 'react';
 import { 
   Users, UserPlus, ActivitySquare, Clock, PieChart, Shield 
 } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from '@/lib/utils';
 
 const features = [
   {
@@ -37,26 +39,35 @@ const features = [
   }
 ];
 
-const FeatureCard = ({ feature }) => {
+const FeatureCard = ({ feature, index }) => {
   const Icon = feature.icon;
   
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-100">
-      <div className="h-12 w-12 rounded-lg bg-brand-orange/10 flex items-center justify-center mb-4">
-        <Icon className="h-6 w-6 text-brand-orange" />
-      </div>
-      <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-      <p className="text-gray-600">{feature.description}</p>
-    </div>
+    <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50">
+      <div className="absolute top-0 left-0 w-1 h-full bg-brand-orange" />
+      <CardContent className="p-8">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="h-14 w-14 rounded-lg bg-gradient-to-br from-brand-orange/20 to-brand-orange/5 flex items-center justify-center">
+            <Icon className="h-7 w-7 text-brand-orange" />
+          </div>
+          <span className="text-xs font-semibold text-gray-400">0{index + 1}</span>
+        </div>
+        <h3 className="text-xl font-bold mb-3 text-gray-800">{feature.title}</h3>
+        <p className="text-gray-600">{feature.description}</p>
+      </CardContent>
+    </Card>
   );
 };
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-16 md:py-24 bg-gray-50">
+    <section id="features" className="py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
       <div className="container px-4 sm:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-brand-orange/10 text-brand-orange text-sm font-medium">
+            Features
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
             Comprehensive HR Solutions
           </h2>
           <p className="text-lg text-gray-600">
@@ -66,7 +77,7 @@ const FeaturesSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <FeatureCard key={index} feature={feature} />
+            <FeatureCard key={index} feature={feature} index={index} />
           ))}
         </div>
       </div>

@@ -5,6 +5,7 @@ import {
   Clock, Database, Shield, Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Card, CardContent } from "@/components/ui/card";
 
 const benefits = [
   {
@@ -59,32 +60,44 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="container px-4 sm:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section className="py-20 md:py-28 bg-gray-900 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-grid-pattern" />
+      </div>
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl"></div>
+      
+      <div className="container px-4 sm:px-6 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-brand-orange/20 border border-brand-orange/10 text-brand-orange text-sm font-medium">
+            Benefits
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
             Business Benefits That <span className="text-brand-orange">Drive Results</span>
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-300">
             Our HR software doesn't just organize information—it transforms your workforce management
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {benefits.map((benefit, index) => (
-            <div 
+            <Card 
               key={index}
-              className="p-6 rounded-xl border border-gray-100 hover:shadow-md transition-all"
+              className="bg-gray-800/50 backdrop-blur-lg border border-white/5 hover:border-white/10 hover:transform hover:scale-105 transition-all duration-300"
             >
-              <div className={cn(
-                "h-12 w-12 rounded-full bg-gradient-to-br flex items-center justify-center mb-4",
-                benefit.color
-              )}>
-                <benefit.icon className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-              <p className="text-gray-600 text-sm">{benefit.description}</p>
-            </div>
+              <CardContent className="p-6">
+                <div className={cn(
+                  "h-12 w-12 rounded-xl bg-gradient-to-br flex items-center justify-center mb-4",
+                  benefit.color
+                )}>
+                  <benefit.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-white">{benefit.title}</h3>
+                <p className="text-gray-300 text-sm">{benefit.description}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
