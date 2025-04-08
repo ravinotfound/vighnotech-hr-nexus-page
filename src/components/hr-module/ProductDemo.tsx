@@ -2,14 +2,14 @@
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Play, Check, X } from 'lucide-react';
+import { Play, Check } from 'lucide-react';
 
 const demoTabs = [
   {
     id: "dashboard",
     title: "HR Dashboard",
     description: "Centralized view of all HR metrics and activities with customizable widgets and real-time insights.",
-    image: "https://placehold.co/800x500?text=HR+Dashboard",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop",
     features: [
       "Real-time employee data visualization",
       "Customizable HR metrics and KPIs",
@@ -21,7 +21,7 @@ const demoTabs = [
     id: "recruitment",
     title: "Recruitment",
     description: "End-to-end applicant tracking system with automated screening and intelligent candidate matching.",
-    image: "https://placehold.co/800x500?text=Recruitment+Module",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2070&auto=format&fit=crop",
     features: [
       "Automated job posting to multiple platforms",
       "Candidate evaluation and scoring",
@@ -33,7 +33,7 @@ const demoTabs = [
     id: "performance",
     title: "Performance",
     description: "Comprehensive employee performance management with continuous feedback and goal tracking.",
-    image: "https://placehold.co/800x500?text=Performance+Module",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop",
     features: [
       "Goal setting and tracking frameworks",
       "360° feedback collection and analysis",
@@ -45,7 +45,7 @@ const demoTabs = [
     id: "reports",
     title: "Analytics",
     description: "In-depth workforce analytics and reporting with predictive insights and custom dashboards.",
-    image: "https://placehold.co/800x500?text=Reports+%26+Analytics",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
     features: [
       "Custom report generation with export options",
       "Workforce trend analysis and forecasting",
@@ -110,7 +110,7 @@ const ProductDemo = () => {
                     </div>
                   </div>
                 </div>
-                <div className="lg:col-span-2 flex flex-col justify-between h-full">
+                <div className="lg:col-span-2 flex flex-col justify-between">
                   <div>
                     <h3 className="text-2xl font-bold mb-2 text-gray-900">{tab.title}</h3>
                     <p className="text-gray-600 mb-6">{tab.description}</p>
