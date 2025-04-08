@@ -6,7 +6,6 @@ import {
   BenefitsSection,
   ProductDemo,
   TestimonialsSection,
-  PricingSection,
   ContactSection,
   CTASection
 } from '@/components/hr-module';
@@ -19,7 +18,6 @@ const Index = () => {
       <BenefitsSection />
       <ProductDemo />
       <TestimonialsSection />
-      <PricingSection />
       <ContactSection />
       <CTASection />
     </div>
