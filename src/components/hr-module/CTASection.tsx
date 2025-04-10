@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
 
 const CTASection = () => {
@@ -32,14 +31,14 @@ const CTASection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button className="group bg-brand-orange hover:bg-brand-orange/90 text-white px-8 py-6 rounded-xl shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:shadow-brand-orange/30 transition-all duration-300 hover:translate-y-[-4px]">
+              <button className="group bg-brand-orange hover:bg-brand-orange/90 text-white px-8 py-6 rounded-xl shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:shadow-brand-orange/30 transition-all duration-300 hover:translate-y-[-4px] inline-flex items-center justify-center gap-2 whitespace-nowrap">
                 <span>Start Your Free Trial</span>
                 <ArrowRight className="ml-2 h-5 w-5 transform transition-transform group-hover:translate-x-1 duration-300" />
-              </Button>
+              </button>
               
-              <Button variant="outline" className="border-gray-300 text-gray-800 bg-white hover:bg-gray-50 px-8 py-6 rounded-xl hover:translate-y-[-4px] transition-transform duration-300">
+              <button className="border border-gray-300 text-gray-800 bg-white hover:bg-gray-50 px-8 py-6 rounded-xl hover:translate-y-[-4px] transition-transform duration-300 inline-flex items-center justify-center gap-2 whitespace-nowrap">
                 Schedule a Demo
-              </Button>
+              </button>
             </div>
             
             <div className="mt-10 flex flex-col items-center">

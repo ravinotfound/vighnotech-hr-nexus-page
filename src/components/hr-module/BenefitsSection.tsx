@@ -5,7 +5,6 @@ import {
   Clock, Database, Shield, Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Card, CardContent } from "@/components/ui/card";
 
 const benefits = [
   {
@@ -95,57 +94,61 @@ const BenefitsSection = () => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-          {benefits.map((benefit, index) => (
-            <div 
-              key={index}
-              className="perspective-1000"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <Card 
-                className={cn(
-                  "bg-white border border-gray-100 hover:border-gray-200 transition-all duration-300 h-full",
-                  "transform-gpu transition-transform duration-500",
-                  hoveredIndex === index ? "shadow-xl -translate-y-2 rotate-y-10" : "shadow-md"
-                )}
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon;
+            
+            return (
+              <div 
+                key={index}
+                className="perspective-1000"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
-                <CardContent className="p-6 relative overflow-hidden">
-                  <div className={cn(
-                    "absolute top-0 right-0 w-24 h-24 -mt-8 -mr-8 rounded-full opacity-10 bg-gray-300 transition-transform duration-500",
-                    hoveredIndex === index ? "scale-150" : "scale-100"
-                  )} />
-                  
-                  <div className={cn(
-                    "h-12 w-12 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center mb-4",
-                    "transition-transform duration-300",
-                    hoveredIndex === index ? "scale-110 rotate-12" : ""
-                  )}>
-                    <benefit.icon className={cn(
-                      "h-6 w-6 transition-colors duration-300",
-                      hoveredIndex === index ? "text-brand-orange" : "text-gray-600"
+                <div 
+                  className={cn(
+                    "bg-white border border-gray-100 hover:border-gray-200 transition-all duration-300 h-full rounded-lg",
+                    "transform-gpu transition-transform duration-500",
+                    hoveredIndex === index ? "shadow-xl -translate-y-2 rotate-y-10" : "shadow-md"
+                  )}
+                >
+                  <div className="p-6 relative overflow-hidden">
+                    <div className={cn(
+                      "absolute top-0 right-0 w-24 h-24 -mt-8 -mr-8 rounded-full opacity-10 bg-gray-300 transition-transform duration-500",
+                      hoveredIndex === index ? "scale-150" : "scale-100"
                     )} />
+                    
+                    <div className={cn(
+                      "h-12 w-12 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center mb-4",
+                      "transition-transform duration-300",
+                      hoveredIndex === index ? "scale-110 rotate-12" : ""
+                    )}>
+                      <Icon className={cn(
+                        "h-6 w-6 transition-colors duration-300",
+                        hoveredIndex === index ? "text-brand-orange" : "text-gray-600"
+                      )} />
+                    </div>
+                    
+                    <h3 className="text-xl font-bold mb-2 text-gray-800">{benefit.title}</h3>
+                    
+                    <div className={cn(
+                      "overflow-hidden transition-all duration-500",
+                      hoveredIndex === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                    )}>
+                      <p className="text-gray-600 text-sm mb-3">{benefit.description}</p>
+                    </div>
+                    
+                    <div className={cn(
+                      "flex items-baseline gap-2 transition-all duration-300",
+                      hoveredIndex === index ? "opacity-100 translate-y-0" : "opacity-50"
+                    )}>
+                      <span className="text-2xl font-bold text-gray-800">{benefit.stat}</span>
+                      <span className="text-xs text-gray-500">{benefit.statLabel}</span>
+                    </div>
                   </div>
-                  
-                  <h3 className="text-xl font-bold mb-2 text-gray-800">{benefit.title}</h3>
-                  
-                  <div className={cn(
-                    "overflow-hidden transition-all duration-500",
-                    hoveredIndex === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                  )}>
-                    <p className="text-gray-600 text-sm mb-3">{benefit.description}</p>
-                  </div>
-                  
-                  <div className={cn(
-                    "flex items-baseline gap-2 transition-all duration-300",
-                    hoveredIndex === index ? "opacity-100 translate-y-0" : "opacity-50"
-                  )}>
-                    <span className="text-2xl font-bold text-gray-800">{benefit.stat}</span>
-                    <span className="text-xs text-gray-500">{benefit.statLabel}</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

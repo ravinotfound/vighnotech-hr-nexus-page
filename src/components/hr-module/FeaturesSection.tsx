@@ -37,30 +37,6 @@ const features = [
   }
 ];
 
-const FeatureCard = ({ feature, index }) => {
-  const Icon = feature.icon;
-  
-  return (
-    <div className="group perspective-1000 transition-all duration-300 hover:-translate-y-2">
-      <div className="h-full border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 bg-white overflow-hidden rounded-md">
-        <div className="p-8 relative">
-          <div className="mb-6 flex items-center justify-between">
-            <div className="h-12 w-12 rounded-lg bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center transform transition-transform group-hover:rotate-3 duration-300">
-              <Icon className="h-6 w-6 text-brand-orange" />
-            </div>
-            <span className="text-3xl font-bold text-gray-100 opacity-60">0{index + 1}</span>
-          </div>
-          
-          <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
-          <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-          
-          <div className="mt-6 h-1 w-12 bg-gray-200 rounded-full transform transition-all duration-500 group-hover:w-24 group-hover:bg-brand-orange/30"></div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const FeaturesSection = () => {
   return (
     <section id="features" className="py-20 md:py-28 bg-gradient-to-b from-white to-gray-50">
@@ -81,9 +57,29 @@ const FeaturesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <FeatureCard key={index} feature={feature} index={index} />
-          ))}
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            
+            return (
+              <div key={index} className="group perspective-1000 transition-all duration-300 hover:-translate-y-2">
+                <div className="h-full border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 bg-white overflow-hidden rounded-md">
+                  <div className="p-8 relative">
+                    <div className="mb-6 flex items-center justify-between">
+                      <div className="h-12 w-12 rounded-lg bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center transform transition-transform group-hover:rotate-3 duration-300">
+                        <Icon className="h-6 w-6 text-brand-orange" />
+                      </div>
+                      <span className="text-3xl font-bold text-gray-100 opacity-60">0{index + 1}</span>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                    
+                    <div className="mt-6 h-1 w-12 bg-gray-200 rounded-full transform transition-all duration-500 group-hover:w-24 group-hover:bg-brand-orange/30"></div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
