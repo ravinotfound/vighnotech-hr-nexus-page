@@ -106,41 +106,31 @@ const BenefitsSection = () => {
               >
                 <div 
                   className={cn(
-                    "bg-white border border-gray-100 hover:border-gray-200 transition-all duration-300 h-full rounded-lg",
+                    "bg-white border border-gray-100 hover:border-gray-200 transition-all duration-300 h-full rounded-lg shadow-xl",
                     "transform-gpu transition-transform duration-500",
-                    hoveredIndex === index ? "shadow-xl -translate-y-2 rotate-y-10" : "shadow-md"
+                    hoveredIndex === index ? "rotate-y-10" : ""
                   )}
                 >
                   <div className="p-6 relative overflow-hidden">
-                    <div className={cn(
-                      "absolute top-0 right-0 w-24 h-24 -mt-8 -mr-8 rounded-full opacity-10 bg-gray-300 transition-transform duration-500",
-                      hoveredIndex === index ? "scale-150" : "scale-100"
-                    )} />
+                    <div className="absolute top-0 right-0 w-24 h-24 -mt-8 -mr-8 rounded-full opacity-10 bg-gray-300" />
                     
                     <div className={cn(
-                      "h-12 w-12 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center mb-4",
+                      "h-12 w-12 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center mb-4 scale-110",
                       "transition-transform duration-300",
-                      hoveredIndex === index ? "scale-110 rotate-12" : ""
+                      hoveredIndex === index ? "rotate-12" : ""
                     )}>
                       <Icon className={cn(
-                        "h-6 w-6 transition-colors duration-300",
-                        hoveredIndex === index ? "text-brand-orange" : "text-gray-600"
+                        "h-6 w-6 transition-colors duration-300 text-brand-orange"
                       )} />
                     </div>
                     
                     <h3 className="text-xl font-bold mb-2 text-gray-800">{benefit.title}</h3>
                     
-                    <div className={cn(
-                      "overflow-hidden transition-all duration-500",
-                      hoveredIndex === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                    )}>
+                    <div className="max-h-40 opacity-100">
                       <p className="text-gray-600 text-sm mb-3">{benefit.description}</p>
                     </div>
                     
-                    <div className={cn(
-                      "flex items-baseline gap-2 transition-all duration-300",
-                      hoveredIndex === index ? "opacity-100 translate-y-0" : "opacity-50"
-                    )}>
+                    <div className="flex items-baseline gap-2 opacity-100">
                       <span className="text-2xl font-bold text-gray-800">{benefit.stat}</span>
                       <span className="text-xs text-gray-500">{benefit.statLabel}</span>
                     </div>

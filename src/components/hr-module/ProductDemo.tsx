@@ -97,81 +97,8 @@ const ProductDemo = () => {
   });
   Button.displayName = "Button";
 
-  // Inline tabs components
-  const Tabs = ({ defaultValue, children, className, onValueChange }: { 
-    defaultValue: string; 
-    children: React.ReactNode; 
-    className?: string;
-    onValueChange?: (value: string) => void;
-  }) => {
-    const [value, setValue] = React.useState(defaultValue);
-
-    const handleValueChange = (newValue: string) => {
-      setValue(newValue);
-      if (onValueChange) {
-        onValueChange(newValue);
-      }
-    };
-
-    return (
-      <div className={className} data-value={value}>
-        {React.Children.map(children, child => {
-          if (React.isValidElement(child)) {
-            return React.cloneElement(child as React.ReactElement<any>, {
-              value,
-              onValueChange: handleValueChange
-            });
-          }
-          return child;
-        })}
-      </div>
-    );
-  };
-
-  const TabsList = ({ className, children }: { className?: string; children: React.ReactNode }) => {
-    return <div className={className}>{children}</div>;
-  };
-
-  const TabsTrigger = ({ 
-    value, 
-    className, 
-    children, 
-    onValueChange 
-  }: { 
-    value: string; 
-    className?: string; 
-    children: React.ReactNode;
-    onValueChange?: (value: string) => void;
-  }) => {
-    const handleClick = () => {
-      if (onValueChange) {
-        onValueChange(value);
-      }
-    };
-
-    return (
-      <button 
-        className={className} 
-        onClick={handleClick}
-        data-state={activeTab === value ? 'active' : 'inactive'}
-      >
-        {children}
-      </button>
-    );
-  };
-
-  const TabsContent = ({ 
-    value, 
-    className, 
-    children 
-  }: { 
-    value: string; 
-    className?: string; 
-    children: React.ReactNode 
-  }) => {
-    if (value !== activeTab) return null;
-    
-    return <div className={className}>{children}</div>;
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
   };
   
   return (
@@ -189,13 +116,13 @@ const ProductDemo = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="dashboard" className="w-full" onValueChange={setActiveTab}>
+        <div className="w-full">
           <div className="flex justify-center mb-8 overflow-x-auto pb-2 no-scrollbar">
-            <TabsList className="bg-gray-100 p-1 rounded-xl">
+            <div className="bg-gray-100 p-1 rounded-xl">
               {demoTabs.map(tab => (
-                <TabsTrigger 
+                <button 
                   key={tab.id}
-                  value={tab.id}
+                  onClick={() => handleTabChange(tab.id)}
                   className={`px-4 py-3 text-sm transition-all duration-300 ${
                     activeTab === tab.id 
                       ? 'bg-white text-brand-orange shadow-md rounded-lg border border-gray-100' 
@@ -203,13 +130,16 @@ const ProductDemo = () => {
                   }`}
                 >
                   {tab.title}
-                </TabsTrigger>
+                </button>
               ))}
-            </TabsList>
+            </div>
           </div>
 
           {demoTabs.map(tab => (
-            <TabsContent key={tab.id} value={tab.id} className="mt-0 animate-fade-in">
+            <div 
+              key={tab.id} 
+              className={`mt-0 animate-fade-in ${activeTab === tab.id ? 'block' : 'hidden'}`}
+            >
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
                 <div className="lg:col-span-3">
                   <div className="relative rounded-xl overflow-hidden border border-gray-100 shadow-lg bg-white group hover:shadow-xl transition-all duration-300">
@@ -253,9 +183,9 @@ const ProductDemo = () => {
                   </div>
                 </div>
               </div>
-            </TabsContent>
+            </div>
           ))}
-        </Tabs>
+        </div>
       </div>
     </section>
   );
