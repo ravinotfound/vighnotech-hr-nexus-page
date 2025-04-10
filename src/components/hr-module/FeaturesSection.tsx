@@ -3,7 +3,6 @@ import React from 'react';
 import { 
   Users, UserPlus, ActivitySquare, Clock, PieChart, Shield 
 } from 'lucide-react';
-import { Card } from "@/components/ui/card";
 
 const features = [
   {
@@ -43,7 +42,7 @@ const FeatureCard = ({ feature, index }) => {
   
   return (
     <div className="group perspective-1000 transition-all duration-300 hover:-translate-y-2">
-      <Card className="h-full border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 bg-white overflow-hidden">
+      <div className="h-full border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 bg-white overflow-hidden rounded-md">
         <div className="p-8 relative">
           <div className="mb-6 flex items-center justify-between">
             <div className="h-12 w-12 rounded-lg bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center transform transition-transform group-hover:rotate-3 duration-300">
@@ -57,7 +56,7 @@ const FeatureCard = ({ feature, index }) => {
           
           <div className="mt-6 h-1 w-12 bg-gray-200 rounded-full transform transition-all duration-500 group-hover:w-24 group-hover:bg-brand-orange/30"></div>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
